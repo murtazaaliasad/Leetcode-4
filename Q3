@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+struct Student {
+    int age;
+    char first_name[51];
+    char last_name[51];
+    int standard;
+};
+
+int main() {
+    struct Student s;
+    
+    printf("Enter Age (integer): ");
+    scanf("%d", &s.age);
+    
+    printf("Enter First Name (string, max 50 chars): ");
+    scanf("%50s", s.first_name);
+    
+    printf("Enter Last Name (string, max 50 chars): ");
+    scanf("%50s", s.last_name);
+    
+    printf("Enter Standard/Grade (integer): ");
+    scanf("%d", &s.standard);
+    
+    printf("\nStudent Details:\n");
+    printf("%d %s %s %d\n", s.age, s.first_name, s.last_name, s.standard);
+    
+    return 0;
+}
