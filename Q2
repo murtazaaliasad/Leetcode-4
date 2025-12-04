@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int tribonacci(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1 || n == 2) {
+        return 1;
+    }
+    
+    int a = 0;
+    int b = 1;
+    int c = 1;
+    
+    int next_t = 0;
+
+    for (int i = 3; i <= n; i++) {
+        next_t = a + b + c;
+        
+        a = b;
+        b = c;
+        c = next_t;
+    }
+
+    return next_t;
+}
+
+int main() {
+    int n1 = 4;
+    int res1 = tribonacci(n1);
+    printf("Input n = %d, Output: %d\n", n1, res1); 
+
+    printf("----------\n");
+    
+    int n2 = 25;
+    int res2 = tribonacci(n2);
+    printf("Input n = %d, Output: %d\n", n2, res2); 
+
+    printf("----------\n");
+
+    int n3 = 0;
+    int res3 = tribonacci(n3);
+    printf("Input n = %d, Output: %d\n", n3, res3); 
+
+    return 0;
+}
