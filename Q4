@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+#define TUNNEL_HEIGHT 41
+
+struct Box {
+    int length;
+    int width;
+    int height;
+};
+
+int calculate_volume(struct Box b) {
+    return b.length * b.width * b.height;
+}
+
+int can_transport(struct Box b) {
+    if (b.height < TUNNEL_HEIGHT) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int main() {
+    int num_boxes;
+    
+    printf("Enter the number of boxes: ");
+    if (scanf("%d", &num_boxes) != 1) {
+        return 1;
+    }
+    
+    printf("Tunnel height is %d feet. Only boxes with height less than %d will pass.\n", TUNNEL_HEIGHT, TUNNEL_HEIGHT);
+    
+    for (int i = 0; i < num_boxes; i++) {
+        struct Box current_box;
+        
+        printf("Enter length, width, and height for Box %d (e.g., 5 5 5): ", i + 1);
+        if (scanf("%d %d %d", &current_box.length, &current_box.width, &current_box.height) != 3) {
+            return 1;
+        }
+        
+        if (can_transport(current_box)) {
+            int volume = calculate_volume(current_box);
+            printf("%d\n", volume);
+        }
+    }
+    
+    return 0;
+}
